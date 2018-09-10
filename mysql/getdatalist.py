@@ -36,7 +36,7 @@ def get_table_data_list(table, database, selected_fields=None):
                         item[selected_fields[field_index]] = field_value
                     data_list.append(item)
 
-    return data_list
+    return True, data_list
 
 
 if __name__ == '__main__':
@@ -50,5 +50,6 @@ if __name__ == '__main__':
 
     table = database.pop('table')
 
-    data_list = get_table_data_list(table=table, database=database, selected_fields='testid')
-    print(data_list)
+    ok, data_list = get_table_data_list(table=table, database=database, selected_fields='testid')
+    if ok:
+        print(data_list)
